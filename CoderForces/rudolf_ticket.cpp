@@ -23,29 +23,17 @@ using vpi = vector<pii>;
 template<class T>ostream&operator<<(ostream&o,vector<T>const&v){o<<"[ ";for(auto const&x:v)o<<x<<" ";return o<<"]";}
 
 void solve(){
-	int n; cin>>n; 
-	vii a(n); fore(i, 0, n) cin>>a[i]; 
-	int f = 1, e = 1; 
-	int i = 0, j = n-1; 
-	while(a[j] == a[j-1]){
-		e++; 
-		j--;
+	int n, m, k; cin>>n>>m>>k; 
+	int cont = 0;
+	vii b(n), c(m);
+	fore(i, 0, n) cin>>b[i]; 
+	fore(i, 0, m) cin>>c[i];
+	fore(i, 0, n){
+		fore(j, 0, m){
+			if(b[i] + c[j] <= k) cont++;
+		}
 	}
-	while(a[i] == a[i+1]){
-		i++; 
-		f++;
-	}
-	if(a[0] == a[n-1]){
-		int ans = n - f - e;
-		if(ans<= 0) pri(0);
-		else pri(ans);
-		return;
-	}
-	int ans = n - max(f, e);
-	if(ans <= 0) pri(0);
-	else pri(ans);
-	
-	
+	pri(cont);
 }
  
 int main(){

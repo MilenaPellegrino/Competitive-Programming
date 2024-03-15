@@ -23,35 +23,30 @@ using vpi = vector<pii>;
 template<class T>ostream&operator<<(ostream&o,vector<T>const&v){o<<"[ ";for(auto const&x:v)o<<x<<" ";return o<<"]";}
 
 void solve(){
-	int n; cin>>n; 
-	vii a(n); fore(i, 0, n) cin>>a[i]; 
-	int f = 1, e = 1; 
-	int i = 0, j = n-1; 
-	while(a[j] == a[j-1]){
-		e++; 
-		j--;
+	int n, x; cin>>n>>x; 
+	map<int, int> m;
+	vii a(n);
+	fore(i, 0, n){
+		int ai; cin>>ai; 
+		m[x-ai] = i+1;
+		a[i] = ai;
 	}
-	while(a[i] == a[i+1]){
-		i++; 
-		f++;
+	fore(i, 0, n){
+		if(m.find(a[i]) != m.end()){
+			if(a[i] != x/2){
+				cout<<i+1<<" "<<m[a[i]];
+				return;
+			}
+			
+		}
 	}
-	if(a[0] == a[n-1]){
-		int ans = n - f - e;
-		if(ans<= 0) pri(0);
-		else pri(ans);
-		return;
-	}
-	int ans = n - max(f, e);
-	if(ans <= 0) pri(0);
-	else pri(ans);
-	
-	
+	cout<<"IMPOSSIBLE"<<"\n";
 }
  
 int main(){
     FIN; 
-    //int t = 1;
-    int t; cin>>t; 
+    int t = 1;
+    //int t; cin>>t; 
     while(t--){
 			solve();
 	}

@@ -20,38 +20,29 @@ using pll = pair<ll,ll>;
 using vii = vector<int>;
 using vll = vector<ll>;
 using vpi = vector<pii>;
+using vpl = vector<pll>;
 template<class T>ostream&operator<<(ostream&o,vector<T>const&v){o<<"[ ";for(auto const&x:v)o<<x<<" ";return o<<"]";}
 
 void solve(){
-	int n; cin>>n; 
-	vii a(n); fore(i, 0, n) cin>>a[i]; 
-	int f = 1, e = 1; 
-	int i = 0, j = n-1; 
-	while(a[j] == a[j-1]){
-		e++; 
-		j--;
+	int n, m, k; cin>>n>>m>>k; 
+	set<int> a;
+	int cont = 0;
+	fore(i, 0, n){
+		int ai; cin>>ai; 
+		a.insert(ai);
 	}
-	while(a[i] == a[i+1]){
-		i++; 
-		f++;
+	fore(i, 0, m){
+		int bi; cin>>bi; 
+		auto it = lower_bound(all(a), bi);
+		if(bi >= )
 	}
-	if(a[0] == a[n-1]){
-		int ans = n - f - e;
-		if(ans<= 0) pri(0);
-		else pri(ans);
-		return;
-	}
-	int ans = n - max(f, e);
-	if(ans <= 0) pri(0);
-	else pri(ans);
-	
 	
 }
  
 int main(){
     FIN; 
-    //int t = 1;
-    int t; cin>>t; 
+    int t = 1;
+    //int t; cin>>t; 
     while(t--){
 			solve();
 	}

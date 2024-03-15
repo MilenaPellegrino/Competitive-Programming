@@ -22,29 +22,26 @@ using vll = vector<ll>;
 using vpi = vector<pii>;
 template<class T>ostream&operator<<(ostream&o,vector<T>const&v){o<<"[ ";for(auto const&x:v)o<<x<<" ";return o<<"]";}
 
+char f(int n){
+	return 'a' + n -1;
+}
 void solve(){
 	int n; cin>>n; 
-	vii a(n); fore(i, 0, n) cin>>a[i]; 
-	int f = 1, e = 1; 
-	int i = 0, j = n-1; 
-	while(a[j] == a[j-1]){
-		e++; 
-		j--;
+	vii a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26};
+	fore(i, 0, 26){
+		fore(j, 0, 26){
+			fore(k, 0, 26){
+				if(a[i] + a[k] + a[j] == n){
+					  char car[3] = {f(a[i]), f(a[j]), f(a[k])};
+					string str(car, car + 3);
+					sort(all(str));
+					cout<<str<<"\n";
+					//cout<<f(a[i])<<f(a[k])<<f(a[j])<<"\n";
+					return;
+				}
+			}
+		}
 	}
-	while(a[i] == a[i+1]){
-		i++; 
-		f++;
-	}
-	if(a[0] == a[n-1]){
-		int ans = n - f - e;
-		if(ans<= 0) pri(0);
-		else pri(ans);
-		return;
-	}
-	int ans = n - max(f, e);
-	if(ans <= 0) pri(0);
-	else pri(ans);
-	
 	
 }
  
